@@ -8,4 +8,9 @@ Notice the boosting for first and last names -- first name matches are treated m
 
 The query is a "bool" query. The advantage of this is that, in a single query, the query can be checked if it satifies various conditions. The satisfaction of each condition is then boosted by a given amount, the value of each boost can then be tuned empirically.
 
-Graph Search is implemented by the bool:should:terms:_id portion of the es query. The array of userids are the friend of friends of the user in question.
+Graph Search is implemented by the "bool":"should":"terms":"_id" portion of the es query. The array of userids are the friend of friends of the user in question.
+
+The friends of friends list is computed "offline" i.e., during signup, start sessions, weekly, etc.
+
+This query structure is highly efficient and at Voxer, returns sorted search results in 100 ms or so.
+
